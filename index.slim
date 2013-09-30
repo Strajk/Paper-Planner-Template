@@ -16,7 +16,7 @@ html(ng-app="app")
  
         $scope.addArea = function() {
           $scope.areas.push($scope.inputArea);
-          $scope.inputText = '';
+          $scope.inputArea = '';
         };
         
         $scope.removeArea = function(index) {
@@ -25,7 +25,7 @@ html(ng-app="app")
         
         $scope.addMeal = function() {
           $scope.meals.push($scope.inputMeal);
-          $scope.inputText = '';
+          $scope.inputMeal = '';
         };
         
         $scope.removeMeal = function(index) {
@@ -52,10 +52,10 @@ html(ng-app="app")
         .page-header: h2 1. Customize
         .row
           .col-sm-4
-            h4 Areas
+            h4 Areas <small>Enter to submit</small>
             form(ng-submit="addArea()")
-              button.btn.btn-primary(type="submit" style="float: right;") Add
-              input.form-control(type="text" ng-model="inputArea" size="30" placeholder="Floss, Sport, Study, …" style="width: auto;")
+              / button.btn.btn-primary(type="submit" style="float: right;") Add
+              input.form-control(type="text" ng-model="inputArea" placeholder="Floss, Sport, Study, …")
       
             ul.list-unstyled
               li(ng-repeat="area in areas")
@@ -64,10 +64,10 @@ html(ng-app="app")
                 
         
           .col-sm-4
-            h4 Meals
+            h4 Meals <small>Enter to submit</small>
             form(ng-submit="addMeal()")
-              button.btn.btn-primary(type="submit" style="float: right;") Add
-              input.form-control(type="text" ng-model="inputMeal" size="30" placeholder="Lunch, Snack, …" style="width: auto;")
+              / button.btn.btn-primary(type="submit" style="float: right;") Add
+              input.form-control(type="text" ng-model="inputMeal" placeholder="Lunch, Snack, …")
           
             ul.list-unstyled
               li(ng-repeat="meal in meals")
@@ -77,15 +77,13 @@ html(ng-app="app")
                 
           .col-sm-4
             h4 Date
-            a.btn.btn-default(ng-click="prevDay()") Prev day
-            | &nbsp;
-            a.btn.btn-default(ng-click="today()") Today
-            | &nbsp;
-            a.btn.btn-default(ng-click="nextDay()") Next day
+            p: a.btn.btn-default(ng-click="prevDay()" style="width: 100%") Prev day
+            p: a.btn.btn-default(ng-click="today()" style="width: 100%") Today
+            p: a.btn.btn-default(ng-click="nextDay()" style="width: 100%") Next day
               
       section#print
         header.page-header.no-print
-          h2 2. Print <small>Print via standard print dialog</small>
+          h2 2. Print <small><strong>Works properly only in Chrome.</strong> Print via standard print dialog</small>
         body
           .paper
             .wrapper

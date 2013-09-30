@@ -15,7 +15,7 @@
       
         $scope.addArea = function() {
           $scope.areas.push($scope.inputArea);
-          $scope.inputText = '';
+          $scope.inputArea = '';
         };
       
         $scope.removeArea = function(index) {
@@ -24,7 +24,7 @@
       
         $scope.addMeal = function() {
           $scope.meals.push($scope.inputMeal);
-          $scope.inputText = '';
+          $scope.inputMeal = '';
         };
       
         $scope.removeMeal = function(index) {
@@ -56,10 +56,10 @@
         <div class="row">
           <div class="col-sm-4">
             <h4>
-              Areas
+              Areas <small>Enter to submit</small>
             </h4>
             <form ng-submit="addArea()">
-              <button class="btn btn-primary" style="float: right;" type="submit">Add</button><input class="form-control" ng-model="inputArea" placeholder="Floss, Sport, Study, …" size="30" style="width: auto;" type="text" />
+              <input class="form-control" ng-model="inputArea" placeholder="Floss, Sport, Study, …" type="text" />
             </form>
             <ul class="list-unstyled">
               <li ng-repeat="area in areas">
@@ -69,10 +69,10 @@
           </div>
           <div class="col-sm-4">
             <h4>
-              Meals
+              Meals <small>Enter to submit</small>
             </h4>
             <form ng-submit="addMeal()">
-              <button class="btn btn-primary" style="float: right;" type="submit">Add</button><input class="form-control" ng-model="inputMeal" placeholder="Lunch, Snack, …" size="30" style="width: auto;" type="text" />
+              <input class="form-control" ng-model="inputMeal" placeholder="Lunch, Snack, …" type="text" />
             </form>
             <ul class="list-unstyled">
               <li ng-repeat="meal in meals">
@@ -84,14 +84,22 @@
             <h4>
               Date
             </h4>
-            <a class="btn btn-default" ng-click="prevDay()">Prev day</a>&nbsp;<a class="btn btn-default" ng-click="today()">Today</a>&nbsp;<a class="btn btn-default" ng-click="nextDay()">Next day</a>
+            <p>
+              <a class="btn btn-default" ng-click="prevDay()" style="width: 100%">Prev day</a>
+            </p>
+            <p>
+              <a class="btn btn-default" ng-click="today()" style="width: 100%">Today</a>
+            </p>
+            <p>
+              <a class="btn btn-default" ng-click="nextDay()" style="width: 100%">Next day</a>
+            </p>
           </div>
         </div>
       </section>
       <section id="print">
         <header class="page-header no-print">
           <h2>
-            2. Print <small>Print via standard print dialog</small>
+            2. Print <small><strong>Works properly only in Chrome.</strong> Print via standard print dialog</small>
           </h2>
         </header>
         <body>
