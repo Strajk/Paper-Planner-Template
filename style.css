@@ -1,0 +1,101 @@
+/* Print */
+@media print {
+  .no-print {
+    display: none; }
+
+  @page {
+    size: A4 portrait;
+    margin: 0mm;
+    @top-center {
+      content: none; }
+
+    @bottom-center {
+      content: counter(page); } }
+
+  .paper:not(:first-child) {
+    page-break-before: always; } }
+@media screen {
+  /* General */
+  body {
+    padding-bottom: 50px; }
+
+  .paper {
+    box-shadow: 0px 0px 5px #888; } }
+section#print body {
+  text-align: center; }
+
+/* Paper structure */
+.paper {
+  box-sizing: border-box;
+  padding: 10mm;
+  margin: 0 auto;
+  /* align center */
+  width: 210mm;
+  height: 297mm; }
+  .paper .wrapper {
+    position: relative;
+    width: 100%;
+    height: 100%; }
+    .paper .wrapper section#tasks {
+      height: 240mm; }
+      .paper .wrapper section#tasks .hours {
+        position: absolute;
+        right: 0;
+        top: 7mm;
+        margin: 0;
+        padding: 0;
+        width: 5mm;
+        list-style: none; }
+        .paper .wrapper section#tasks .hours li {
+          position: relative;
+          height: 14mm;
+          border-top: 1px solid gray; }
+          .paper .wrapper section#tasks .hours li span {
+            position: absolute;
+            left: -6mm;
+            top: -2.5mm; }
+    .paper .wrapper .bottom {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0; }
+      .paper .wrapper .bottom section#meals {
+        margin-bottom: 2mm; }
+        .paper .wrapper .bottom section#meals table {
+          width: 100%;
+          height: 25mm;
+          table-layout: fixed;
+          /* Same widths of cells */ }
+          .paper .wrapper .bottom section#meals table td {
+            padding: 5px;
+            text-align: center;
+            border: 1px solid #cccccc;
+            color: #cccccc; }
+      .paper .wrapper .bottom footer {
+        height: 10mm; }
+        .paper .wrapper .bottom footer section#info {
+          float: right;
+          width: 40mm;
+          margin-left: 10mm;
+          height: 100%;
+          text-align: right;
+          font-size: 4mm; }
+          .paper .wrapper .bottom footer section#info p {
+            line-height: 5mm;
+            margin: 0; }
+          .paper .wrapper .bottom footer section#info .day {
+            font-weight: bold; }
+        .paper .wrapper .bottom footer section#areas ul {
+          margin: 0;
+          padding: 0; }
+          .paper .wrapper .bottom footer section#areas ul li {
+            float: left;
+            margin-right: 1mm;
+            display: inline-block;
+            padding: 6px 10px;
+            font-weight: normal;
+            text-align: center;
+            vertical-align: middle;
+            white-space: nowrap;
+            border: 1px solid #cccccc;
+            border-radius: 4px; }

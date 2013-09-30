@@ -1,0 +1,122 @@
+- hours = ['06', '07', '08', '09', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22']
+doctype html
+html(ng-app="app")
+  head
+    link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.0.0-rc2/css/bootstrap.min.css"
+    link rel="stylesheet" href="style.css"
+    script(src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.1.5/angular.min.js")
+    script(src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.2.1/moment+langs.min.js")
+    javascript:
+      angular.module('app', []);
+      
+      function PlannerCtrl($scope) {
+        $scope.areas = ["Floss", "Sport", "Music", "Plan", "Work review", "Study"];
+        $scope.meals = ['breakfast', 'AM snack', 'lunch', 'PM snack', 'post workout', 'dinner', 'night snack'];
+        $scope.date = moment();
+ 
+        $scope.addArea = function() {
+          $scope.areas.push($scope.inputArea);
+          $scope.inputText = '';
+        };
+        
+        $scope.removeArea = function(index) {
+          $scope.areas.splice(index, 1);
+        };
+        
+        $scope.addMeal = function() {
+          $scope.meals.push($scope.inputMeal);
+          $scope.inputText = '';
+        };
+        
+        $scope.removeMeal = function(index) {
+          $scope.meals.splice(index, 1);
+        };
+        
+        $scope.prevDay = function() {
+          $scope.date.subtract('days', 1);
+        };
+        
+        $scope.today = function() {
+          $scope.date = moment();
+        };
+
+        $scope.nextDay = function() {
+          $scope.date.add('days', 1);
+        };
+      }
+      
+  body(ng-controller="PlannerCtrl")
+    .container
+  
+      section#customize.no-print
+        .page-header: h2 1. Customize
+        .row
+          .col-sm-4
+            h4 Areas
+            form(ng-submit="addArea()")
+              button.btn.btn-primary(type="submit" style="float: right;") Add
+              input.form-control(type="text" ng-model="inputArea" size="30" placeholder="Floss, Sport, Study, …" style="width: auto;")
+      
+            ul.list-unstyled
+              li(ng-repeat="area in areas")
+                a.delete(ng-click="removeArea($index)") &times; 
+                | {{ area }}
+                
+        
+          .col-sm-4
+            h4 Meals
+            form(ng-submit="addMeal()")
+              button.btn.btn-primary(type="submit" style="float: right;") Add
+              input.form-control(type="text" ng-model="inputMeal" size="30" placeholder="Lunch, Snack, …" style="width: auto;")
+          
+            ul.list-unstyled
+              li(ng-repeat="meal in meals")
+                a.delete(ng-click="removeMeal($index)") &times; 
+                | {{ meal }}
+          
+                
+          .col-sm-4
+            h4 Date
+            a.btn.btn-default(ng-click="prevDay()") Prev day
+            | &nbsp;
+            a.btn.btn-default(ng-click="today()") Today
+            | &nbsp;
+            a.btn.btn-default(ng-click="nextDay()") Next day
+              
+      section#print
+        header.page-header.no-print
+          h2 2. Print <small>Print via standard print dialog</small>
+        body
+          .paper
+            .wrapper
+              section#tasks
+                ul.hours
+                  - for hour in hours
+                    li: span = hour
+            
+              .bottom
+                section#meals
+                  table
+                    tr: td(ng-repeat="meal in meals") {{ meal }}
+            
+                footer
+                  section#info
+                    p
+                      span.year {{ date.format("YYYY") }}
+                      | /
+                      span.month {{ date.format("MM") }}
+                      | /
+                      span.day {{ date.format("DD") }}
+                    p
+                      span.week {{ date.format("ww") }}
+                      | .&nbsp;
+                      span.weekday {{ date.format("dddd") }}
+                      
+                  section#areas
+                    ul.list-areas
+                      li(ng-repeat="area in areas") {{ area }}
+                
+                  
+              
+
+    

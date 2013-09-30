@@ -1,0 +1,106 @@
+$color-subtle: #ccc;
+
+$paper-width-print: 210mm;
+$paper-height-print: 297mm;
+$paper-margin-print: 10mm;
+
+$paper-width-display: (210*3)px;
+$paper-height-display: (297*3)px;
+$paper-margin-display: (10*3)px;
+
+$size-meals-height: 25mm;
+$size-meals-margin: 2mm;
+$size-footer-height: 10mm;
+
+/* Print */
+@media print {
+  .no-print {display: none;}
+  @page {
+    size: A4 portrait;
+    margin: 0mm;
+    @top-center { content: none }
+    @bottom-center { content: counter(page) }
+  }
+  .paper:not(:first-child) { page-break-before: always; }
+}
+
+@media screen {
+  /* General */
+  body {
+    padding-bottom: 50px;
+  }
+  .paper {
+    box-shadow: 0px 0px 5px #888;
+  } 
+}
+
+section#print {
+  body {text-align: center;}
+}
+
+/* Paper structure */
+.paper {
+  box-sizing: border-box; padding: $paper-margin-print;
+  margin: 0 auto; /* align center */
+  width: 210mm; height: 297mm;
+  .wrapper {
+//    outline: 1px dotted gray;
+    position: relative;
+    width: 100%; height: 100%;
+    section#tasks {
+      height: $paper-height-print - 2*$paper-margin-print - $size-meals-height - $size-meals-margin - $size-footer-height;
+      .hours {
+        position: absolute; right: 0; top: 7mm;
+        margin: 0; padding: 0;
+        width: 5mm;
+        list-style: none;
+        li {
+          position: relative;
+          height: 14mm;
+          border-top: 1px solid gray;
+          span {
+            position: absolute;
+            left: -6mm; top: -2.5mm;
+          }
+        }
+      }
+    }
+    .bottom {
+      position: absolute; left: 0; right: 0; bottom: 0; 
+      section#meals {
+        margin-bottom: $size-meals-margin;
+        table {
+          width: 100%; height: $size-meals-height;
+          table-layout: fixed; /* Same widths of cells */
+          td {
+            padding: 5px;
+            text-align: center;
+            border: 1px solid $color-subtle; color: $color-subtle;
+          }
+        }
+      }
+      footer {
+        height: $size-footer-height;
+        section#info {
+          float: right; 
+          width: 40mm; margin-left: 10mm; height: 100%;
+          text-align: right; font-size: 4mm;
+          p {line-height: 5mm; margin: 0;}
+          .day {font-weight: bold;}
+        }
+        
+        section#areas {
+          ul {
+            margin: 0; padding: 0;
+            li {
+              float: left; margin-right: 1mm;
+              display: inline-block; padding: 6px 10px; 
+              font-weight: normal; text-align: center; vertical-align: middle; white-space: nowrap;
+              border: 1px solid $color-subtle; border-radius: 4px;
+            }
+          } 
+        }
+      }
+    }
+  }
+}

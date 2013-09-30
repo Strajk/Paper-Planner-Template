@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html ng-app="app">
+  <head>
+    <link href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.0.0-rc2/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="style.css" rel="stylesheet" />
+    <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.1.5/angular.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.2.1/moment+langs.min.js"></script>
+    <script type="text/javascript">
+      angular.module('app', []);
+      
+      function PlannerCtrl($scope) {
+        $scope.areas = ["Floss", "Sport", "Music", "Plan", "Work review", "Study"];
+        $scope.meals = ['breakfast', 'AM snack', 'lunch', 'PM snack', 'post workout', 'dinner', 'night snack'];
+        $scope.date = moment();
+      
+        $scope.addArea = function() {
+          $scope.areas.push($scope.inputArea);
+          $scope.inputText = '';
+        };
+      
+        $scope.removeArea = function(index) {
+          $scope.areas.splice(index, 1);
+        };
+      
+        $scope.addMeal = function() {
+          $scope.meals.push($scope.inputMeal);
+          $scope.inputText = '';
+        };
+      
+        $scope.removeMeal = function(index) {
+          $scope.meals.splice(index, 1);
+        };
+      
+        $scope.prevDay = function() {
+          $scope.date.subtract('days', 1);
+        };
+      
+        $scope.today = function() {
+          $scope.date = moment();
+        };
+      
+        $scope.nextDay = function() {
+          $scope.date.add('days', 1);
+        };
+      }
+    </script>
+  </head>
+  <body ng-controller="PlannerCtrl">
+    <div class="container">
+      <section class="no-print" id="customize">
+        <div class="page-header">
+          <h2>
+            1. Customize
+          </h2>
+        </div>
+        <div class="row">
+          <div class="col-sm-4">
+            <h4>
+              Areas
+            </h4>
+            <form ng-submit="addArea()">
+              <button class="btn btn-primary" style="float: right;" type="submit">Add</button><input class="form-control" ng-model="inputArea" placeholder="Floss, Sport, Study, …" size="30" style="width: auto;" type="text" />
+            </form>
+            <ul class="list-unstyled">
+              <li ng-repeat="area in areas">
+                <a class="delete" ng-click="removeArea($index)">&times; </a>{{ area }}
+              </li>
+            </ul>
+          </div>
+          <div class="col-sm-4">
+            <h4>
+              Meals
+            </h4>
+            <form ng-submit="addMeal()">
+              <button class="btn btn-primary" style="float: right;" type="submit">Add</button><input class="form-control" ng-model="inputMeal" placeholder="Lunch, Snack, …" size="30" style="width: auto;" type="text" />
+            </form>
+            <ul class="list-unstyled">
+              <li ng-repeat="meal in meals">
+                <a class="delete" ng-click="removeMeal($index)">&times; </a>{{ meal }}
+              </li>
+            </ul>
+          </div>
+          <div class="col-sm-4">
+            <h4>
+              Date
+            </h4>
+            <a class="btn btn-default" ng-click="prevDay()">Prev day</a>&nbsp;<a class="btn btn-default" ng-click="today()">Today</a>&nbsp;<a class="btn btn-default" ng-click="nextDay()">Next day</a>
+          </div>
+        </div>
+      </section>
+      <section id="print">
+        <header class="page-header no-print">
+          <h2>
+            2. Print <small>Print via standard print dialog</small>
+          </h2>
+        </header>
+        <body>
+          <div class="paper">
+            <div class="wrapper">
+              <section id="tasks">
+                <ul class="hours">
+                  <li>
+                    <span>06</span>
+                  </li>
+                  <li>
+                    <span>07</span>
+                  </li>
+                  <li>
+                    <span>08</span>
+                  </li>
+                  <li>
+                    <span>09</span>
+                  </li>
+                  <li>
+                    <span>10</span>
+                  </li>
+                  <li>
+                    <span>11</span>
+                  </li>
+                  <li>
+                    <span>12</span>
+                  </li>
+                  <li>
+                    <span>13</span>
+                  </li>
+                  <li>
+                    <span>14</span>
+                  </li>
+                  <li>
+                    <span>15</span>
+                  </li>
+                  <li>
+                    <span>16</span>
+                  </li>
+                  <li>
+                    <span>17</span>
+                  </li>
+                  <li>
+                    <span>18</span>
+                  </li>
+                  <li>
+                    <span>19</span>
+                  </li>
+                  <li>
+                    <span>20</span>
+                  </li>
+                  <li>
+                    <span>21</span>
+                  </li>
+                  <li>
+                    <span>22</span>
+                  </li>
+                </ul>
+              </section>
+              <div class="bottom">
+                <section id="meals">
+                  <table>
+                    <tr>
+                      <td ng-repeat="meal in meals">
+                        {{ meal }}
+                      </td>
+                    </tr>
+                  </table>
+                </section>
+                <footer>
+                  <section id="info">
+                    <p>
+                      <span class="year">{{ date.format("YYYY") }}</span>/<span class="month">{{ date.format("MM") }}</span>/<span class="day">{{ date.format("DD") }}</span>
+                    </p>
+                    <p>
+                      <span class="week">{{ date.format("ww") }}</span>.&nbsp;<span class="weekday">{{ date.format("dddd") }}</span>
+                    </p>
+                  </section>
+                  <section id="areas">
+                    <ul class="list-areas">
+                      <li ng-repeat="area in areas">
+                        {{ area }}
+                      </li>
+                    </ul>
+                  </section>
+                </footer>
+              </div>
+            </div>
+          </div>
+        </body>
+      </section>
+    </div>
+  </body>
+</html>
