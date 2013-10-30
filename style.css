@@ -1,5 +1,6 @@
 /* Print */
 @media print {
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Volumes\/Data\/Projects\/planner\/public\/style\.scss}line{font-family:\0000320}}
   .no-print {
     display: none; }
 
@@ -12,19 +13,24 @@
     @bottom-center {
       content: counter(page); } }
 
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Volumes\/Data\/Projects\/planner\/public\/style\.scss}line{font-family:\0000327}}
   .paper:not(:first-child) {
     page-break-before: always; } }
 @media screen {
   /* General */
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Volumes\/Data\/Projects\/planner\/public\/style\.scss}line{font-family:\0000332}}
   body {
     padding-bottom: 50px; }
 
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Volumes\/Data\/Projects\/planner\/public\/style\.scss}line{font-family:\0000335}}
   .paper {
     box-shadow: 0px 0px 5px #888; } }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Volumes\/Data\/Projects\/planner\/public\/style\.scss}line{font-family:\0000341}}
 section#print body {
   text-align: center; }
 
 /* Paper structure */
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Volumes\/Data\/Projects\/planner\/public\/style\.scss}line{font-family:\0000345}}
 .paper {
   box-sizing: border-box;
   padding: 10mm;
@@ -32,70 +38,127 @@ section#print body {
   /* align center */
   width: 210mm;
   height: 297mm; }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Volumes\/Data\/Projects\/planner\/public\/style\.scss}line{font-family:\0000349}}
   .paper .wrapper {
     position: relative;
     width: 100%;
     height: 100%; }
-    .paper .wrapper section#tasks {
-      height: 240mm; }
-      .paper .wrapper section#tasks .hours {
-        position: absolute;
-        right: 0;
-        top: 7mm;
-        margin: 0;
-        padding: 0;
-        width: 5mm;
-        list-style: none; }
-        .paper .wrapper section#tasks .hours li {
-          position: relative;
-          height: 14mm;
-          border-top: 1px solid gray; }
-          .paper .wrapper section#tasks .hours li span {
-            position: absolute;
-            left: -6mm;
-            top: -2.5mm; }
-    .paper .wrapper .bottom {
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Volumes\/Data\/Projects\/planner\/public\/style\.scss}line{font-family:\0000351}}
+    .paper .wrapper div#wrapper-top {
+      height: 243mm; }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Volumes\/Data\/Projects\/planner\/public\/style\.scss}line{font-family:\0000353}}
+      .paper .wrapper div#wrapper-top #wrapper-top-right {
+        float: right;
+        width: 25mm; }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Volumes\/Data\/Projects\/planner\/public\/style\.scss}line{font-family:\0000357}}
+      .paper .wrapper div#wrapper-top #wrapper-top-left {
+        margin-right: 27mm;
+        position: relative;
+        height: 100%; }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Volumes\/Data\/Projects\/planner\/public\/style\.scss}line{font-family:\0000360}}
+        .paper .wrapper div#wrapper-top #wrapper-top-left #wrapper-top-left-top {
+          height: 50mm; }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Volumes\/Data\/Projects\/planner\/public\/style\.scss}line{font-family:\0000364}}
+        .paper .wrapper div#wrapper-top #wrapper-top-left #wrapper-top-left-bottom {
+          position: absolute;
+          left: 0;
+          right: 0;
+          bottom: 0; }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Volumes\/Data\/Projects\/planner\/public\/style\.scss}line{font-family:\0000370}}
+    .paper .wrapper #wrapper-bottom {
       position: absolute;
       left: 0;
       right: 0;
       bottom: 0; }
-      .paper .wrapper .bottom section#meals {
-        margin-bottom: 2mm; }
-        .paper .wrapper .bottom section#meals table {
-          width: 100%;
-          height: 25mm;
-          table-layout: fixed;
-          /* Same widths of cells */ }
-          .paper .wrapper .bottom section#meals table td {
-            padding: 5px;
-            text-align: center;
-            border: 1px solid #cccccc;
-            color: #cccccc; }
-      .paper .wrapper .bottom footer {
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Volumes\/Data\/Projects\/planner\/public\/style\.scss}line{font-family:\0000375}}
+      .paper .wrapper #wrapper-bottom div#wrapper-bottom-bottom {
         height: 10mm; }
-        .paper .wrapper .bottom footer section#info {
-          float: right;
-          width: 40mm;
-          margin-left: 10mm;
-          height: 100%;
-          text-align: right;
-          font-size: 4mm; }
-          .paper .wrapper .bottom footer section#info p {
-            line-height: 5mm;
-            margin: 0; }
-          .paper .wrapper .bottom footer section#info .day {
-            font-weight: bold; }
-        .paper .wrapper .bottom footer section#areas ul {
-          margin: 0;
-          padding: 0; }
-          .paper .wrapper .bottom footer section#areas ul li {
-            float: left;
-            margin-right: 1mm;
-            display: inline-block;
-            padding: 6px 10px;
-            font-weight: normal;
-            text-align: center;
-            vertical-align: middle;
-            white-space: nowrap;
-            border: 1px solid #cccccc;
-            border-radius: 4px; }
+
+/* Sections */
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Volumes\/Data\/Projects\/planner\/public\/style\.scss}line{font-family:\0000386}}
+section#tasks .hours {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  width: 10mm; }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Volumes\/Data\/Projects\/planner\/public\/style\.scss}line{font-family:\0000389}}
+  section#tasks .hours li {
+    height: 14mm;
+    border-top: 1px solid gray;
+    text-align: center; }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Volumes\/Data\/Projects\/planner\/public\/style\.scss}line{font-family:\0000393}}
+    section#tasks .hours li span {
+      position: relative;
+      top: -2.7mm;
+      padding: 0 1mm;
+      background: white !important; }
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Volumes\/Data\/Projects\/planner\/public\/style\.scss}line{font-family:\00003101}}
+section#meals {
+  margin-bottom: 2mm; }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Volumes\/Data\/Projects\/planner\/public\/style\.scss}line{font-family:\00003103}}
+  section#meals table {
+    width: 100%;
+    height: 20mm;
+    table-layout: fixed;
+    /* Same widths of cells */ }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Volumes\/Data\/Projects\/planner\/public\/style\.scss}line{font-family:\00003106}}
+    section#meals table td {
+      padding: 5px;
+      text-align: center;
+      border: 1px solid #eeeeee !important;
+      color: #eeeeee !important; }
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Volumes\/Data\/Projects\/planner\/public\/style\.scss}line{font-family:\00003115}}
+section#areas ul {
+  margin: 0;
+  padding: 0; }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Volumes\/Data\/Projects\/planner\/public\/style\.scss}line{font-family:\00003117}}
+  section#areas ul li {
+    color: #eeeeee !important;
+    float: left;
+    width: 50%;
+    height: 50mm;
+    line-height: 50mm;
+    display: inline-block;
+    font-weight: normal;
+    text-align: center;
+    vertical-align: middle;
+    white-space: nowrap;
+    border: 1px solid #eeeeee !important; }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Volumes\/Data\/Projects\/planner\/public\/style\.scss}line{font-family:\00003123}}
+  section#areas ul li:nth-child(even) {
+    border-left: 0 !important; }
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Volumes\/Data\/Projects\/planner\/public\/style\.scss}line{font-family:\00003131}}
+section#routines ul {
+  margin: 0;
+  padding: 0; }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Volumes\/Data\/Projects\/planner\/public\/style\.scss}line{font-family:\00003133}}
+  section#routines ul li {
+    float: left;
+    margin-right: 1mm;
+    display: inline-block;
+    padding: 6px 10px;
+    font-weight: normal;
+    text-align: center;
+    vertical-align: middle;
+    white-space: nowrap;
+    border: 1px solid #eeeeee !important;
+    border-radius: 4px; }
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Volumes\/Data\/Projects\/planner\/public\/style\.scss}line{font-family:\00003142}}
+section#info {
+  float: right;
+  width: 40mm;
+  margin-left: 10mm;
+  height: 100%;
+  text-align: right;
+  font-size: 4mm; }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Volumes\/Data\/Projects\/planner\/public\/style\.scss}line{font-family:\00003146}}
+  section#info p {
+    line-height: 5mm;
+    margin: 0; }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Volumes\/Data\/Projects\/planner\/public\/style\.scss}line{font-family:\00003147}}
+  section#info .day {
+    font-weight: bold; }

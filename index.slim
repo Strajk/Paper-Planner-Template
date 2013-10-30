@@ -10,7 +10,8 @@ html(ng-app="app")
       angular.module('app', []);
       
       function PlannerCtrl($scope) {
-        $scope.areas = ["Floss", "Sport", "Music", "Plan", "Work review", "Study"];
+        $scope.areas = ["People", "Health", "Interests", "Education", "Create", "Work"];
+        $scope.routines = ["Floss", "7AM wakeup", "Plan", "Review", "Sash", "Photo"];
         $scope.meals = ['breakfast', 'AM snack', 'lunch', 'PM snack', 'post workout', 'dinner', 'night snack'];
         $scope.date = moment();
  
@@ -51,19 +52,29 @@ html(ng-app="app")
       section#customize.no-print
         .page-header: h2 1. Customize
         .row
-          .col-sm-4
+          .col-sm-3
             h4 Areas <small>Enter to submit</small>
             form(ng-submit="addArea()")
               / button.btn.btn-primary(type="submit" style="float: right;") Add
-              input.form-control(type="text" ng-model="inputArea" placeholder="Floss, Sport, Study, …")
+              input.form-control(type="text" ng-model="inputArea" placeholder="Work, health, create, …")
       
             ul.list-unstyled
               li(ng-repeat="area in areas")
                 a.delete(ng-click="removeArea($index)") &times; 
                 | {{ area }}
                 
+          .col-sm-3
+            h4 Routines <small>Enter to submit</small>
+            form(ng-submit="addRoutine()")
+              input.form-control(type="text" ng-model="inputRoutine" placeholder="Floss, Sport, Study, …")
+      
+            ul.list-unstyled
+              li(ng-repeat="routine in routines")
+                a.delete(ng-click="removeRoutine($index)") &times; 
+                | {{ routine }}
+                
         
-          .col-sm-4
+          .col-sm-3
             h4 Meals <small>Enter to submit</small>
             form(ng-submit="addMeal()")
               / button.btn.btn-primary(type="submit" style="float: right;") Add
@@ -75,7 +86,7 @@ html(ng-app="app")
                 | {{ meal }}
           
                 
-          .col-sm-4
+          .col-sm-3
             h4 Date
             p: a.btn.btn-default(ng-click="prevDay()" style="width: 100%") Prev day
             p: a.btn.btn-default(ng-click="today()" style="width: 100%") Today
@@ -87,17 +98,28 @@ html(ng-app="app")
         body
           .paper
             .wrapper
-              section#tasks
-                ul.hours
-                  - for hour in hours
-                    li: span = hour
+              div#wrapper-top
+                #wrapper-top-right
+                  section#tasks
+                    ul.hours
+                      - for hour in hours
+                        li: span = hour
+                #wrapper-top-left
+                  #wrapper-top-left-top
+                    section#tasks
+                    
+                  #wrapper-top-left-bottom
+                    section#areas
+                      ul.list-areas
+                        li(ng-repeat="area in areas") {{ area }}
             
-              .bottom
-                section#meals
-                  table
-                    tr: td(ng-repeat="meal in meals") {{ meal }}
+              div#wrapper-bottom
+                div#wrapper-bottom-top
+                  section#meals
+                    table
+                      tr: td(ng-repeat="meal in meals") {{ meal }}
             
-                footer
+                div#wrapper-bottom-bottom
                   section#info
                     p
                       span.year {{ date.format("YYYY") }}
@@ -110,9 +132,9 @@ html(ng-app="app")
                       | .&nbsp;
                       span.weekday {{ date.format("dddd") }}
                       
-                  section#areas
-                    ul.list-areas
-                      li(ng-repeat="area in areas") {{ area }}
+                  section#routines
+                    ul.list-routines
+                      li(ng-repeat="routine in routines") {{ routine }}
                 
                   
               

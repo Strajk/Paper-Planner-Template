@@ -9,7 +9,8 @@
       angular.module('app', []);
       
       function PlannerCtrl($scope) {
-        $scope.areas = ["Floss", "Sport", "Music", "Plan", "Work review", "Study"];
+        $scope.areas = ["People", "Health", "Interests", "Education", "Create", "Work"];
+        $scope.routines = ["Floss", "7AM wakeup", "Plan", "Review", "Sash", "Photo"];
         $scope.meals = ['breakfast', 'AM snack', 'lunch', 'PM snack', 'post workout', 'dinner', 'night snack'];
         $scope.date = moment();
       
@@ -54,12 +55,12 @@
           </h2>
         </div>
         <div class="row">
-          <div class="col-sm-4">
+          <div class="col-sm-3">
             <h4>
               Areas <small>Enter to submit</small>
             </h4>
             <form ng-submit="addArea()">
-              <input class="form-control" ng-model="inputArea" placeholder="Floss, Sport, Study, …" type="text" />
+              <input class="form-control" ng-model="inputArea" placeholder="Work, health, create, …" type="text" />
             </form>
             <ul class="list-unstyled">
               <li ng-repeat="area in areas">
@@ -67,7 +68,20 @@
               </li>
             </ul>
           </div>
-          <div class="col-sm-4">
+          <div class="col-sm-3">
+            <h4>
+              Routines <small>Enter to submit</small>
+            </h4>
+            <form ng-submit="addRoutine()">
+              <input class="form-control" ng-model="inputRoutine" placeholder="Floss, Sport, Study, …" type="text" />
+            </form>
+            <ul class="list-unstyled">
+              <li ng-repeat="routine in routines">
+                <a class="delete" ng-click="removeRoutine($index)">&times; </a>{{ routine }}
+              </li>
+            </ul>
+          </div>
+          <div class="col-sm-3">
             <h4>
               Meals <small>Enter to submit</small>
             </h4>
@@ -80,7 +94,7 @@
               </li>
             </ul>
           </div>
-          <div class="col-sm-4">
+          <div class="col-sm-3">
             <h4>
               Date
             </h4>
@@ -105,72 +119,92 @@
         <body>
           <div class="paper">
             <div class="wrapper">
-              <section id="tasks">
-                <ul class="hours">
-                  <li>
-                    <span>06</span>
-                  </li>
-                  <li>
-                    <span>07</span>
-                  </li>
-                  <li>
-                    <span>08</span>
-                  </li>
-                  <li>
-                    <span>09</span>
-                  </li>
-                  <li>
-                    <span>10</span>
-                  </li>
-                  <li>
-                    <span>11</span>
-                  </li>
-                  <li>
-                    <span>12</span>
-                  </li>
-                  <li>
-                    <span>13</span>
-                  </li>
-                  <li>
-                    <span>14</span>
-                  </li>
-                  <li>
-                    <span>15</span>
-                  </li>
-                  <li>
-                    <span>16</span>
-                  </li>
-                  <li>
-                    <span>17</span>
-                  </li>
-                  <li>
-                    <span>18</span>
-                  </li>
-                  <li>
-                    <span>19</span>
-                  </li>
-                  <li>
-                    <span>20</span>
-                  </li>
-                  <li>
-                    <span>21</span>
-                  </li>
-                  <li>
-                    <span>22</span>
-                  </li>
-                </ul>
-              </section>
-              <div class="bottom">
-                <section id="meals">
-                  <table>
-                    <tr>
-                      <td ng-repeat="meal in meals">
-                        {{ meal }}
-                      </td>
-                    </tr>
-                  </table>
-                </section>
-                <footer>
+              <div id="wrapper-top">
+                <div id="wrapper-top-right">
+                  <section id="tasks">
+                    <ul class="hours">
+                      <li>
+                        <span>06</span>
+                      </li>
+                      <li>
+                        <span>07</span>
+                      </li>
+                      <li>
+                        <span>08</span>
+                      </li>
+                      <li>
+                        <span>09</span>
+                      </li>
+                      <li>
+                        <span>10</span>
+                      </li>
+                      <li>
+                        <span>11</span>
+                      </li>
+                      <li>
+                        <span>12</span>
+                      </li>
+                      <li>
+                        <span>13</span>
+                      </li>
+                      <li>
+                        <span>14</span>
+                      </li>
+                      <li>
+                        <span>15</span>
+                      </li>
+                      <li>
+                        <span>16</span>
+                      </li>
+                      <li>
+                        <span>17</span>
+                      </li>
+                      <li>
+                        <span>18</span>
+                      </li>
+                      <li>
+                        <span>19</span>
+                      </li>
+                      <li>
+                        <span>20</span>
+                      </li>
+                      <li>
+                        <span>21</span>
+                      </li>
+                      <li>
+                        <span>22</span>
+                      </li>
+                    </ul>
+                  </section>
+                </div>
+                <div id="wrapper-top-left">
+                  <div id="wrapper-top-left-top">
+                    <section id="tasks"></section>
+                  </div>
+                  <div id="wrapper-top-left-bottom">
+                    <section id="areas">
+                      <ul class="list-areas">
+                        <li ng-repeat="area in areas">
+                          {{ area }}
+                        </li>
+                      </ul>
+                    </section>
+                  </div>
+                </div>
+              </div>
+              <div id="wrapper-bottom">
+                <div id="wrapper-bottom-top">
+                  <section id="meals">
+                    <table>
+                      <tr>
+                        <td ng-repeat="meal in meals">
+                          {{ meal }}
+                        </td>
+                      </tr>
+                    </table>
+                  </section>
+                </div>
+                <div id="wrapper-bottom-bottom">
                   <section id="info">
                     <p>
                       <span class="year">{{ date.format("YYYY") }}</span>/<span class="month">{{ date.format("MM") }}</span>/<span class="day">{{ date.format("DD") }}</span>
@@ -179,14 +213,14 @@
                       <span class="week">{{ date.format("ww") }}</span>.&nbsp;<span class="weekday">{{ date.format("dddd") }}</span>
                     </p>
                   </section>
-                  <section id="areas">
-                    <ul class="list-areas">
-                      <li ng-repeat="area in areas">
-                        {{ area }}
+                  <section id="routines">
+                    <ul class="list-routines">
+                      <li ng-repeat="routine in routines">
+                        {{ routine }}
                       </li>
                     </ul>
                   </section>
-                </footer>
+                </div>
               </div>
             </div>
           </div>
