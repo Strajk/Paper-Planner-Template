@@ -10,10 +10,11 @@ html(ng-app="app")
       angular.module('app', []);
       
       function PlannerCtrl($scope) {
-        $scope.areas = ["People", "Health", "Interests", "Education", "Create", "Work"];
-        $scope.routines = ["Floss", "7AM wakeup", "Plan", "Review", "Sash", "Photo"];
-        $scope.meals = ['breakfast', 'AM snack', 'lunch', 'PM snack', 'post workout', 'dinner', 'night snack'];
+        $scope.areas = ["People", "Health", "Interests", "Organize", "Create", "Work"];
+        $scope.routines = ["Floss", "6AM wakeup", "Plan", "Review", "Love", "Photo", "Guitar"];
+        $scope.meals = ['breakfast', 'AM snack', 'lunch', 'PM snack', 'dinner', 'night snack'];
         $scope.date = moment();
+
  
         $scope.addArea = function() {
           $scope.areas.push($scope.inputArea);
@@ -22,6 +23,15 @@ html(ng-app="app")
         
         $scope.removeArea = function(index) {
           $scope.areas.splice(index, 1);
+        };
+
+        $scope.addRoutine = function() {
+          $scope.routines.push($scope.inputRoutine);
+          $scope.inputRoutine = '';
+        };
+
+        $scope.removeRoutine = function(index) {
+          $scope.routines.splice(index, 1);
         };
         
         $scope.addMeal = function() {
@@ -56,7 +66,7 @@ html(ng-app="app")
             h4 Areas <small>Enter to submit</small>
             form(ng-submit="addArea()")
               / button.btn.btn-primary(type="submit" style="float: right;") Add
-              input.form-control(type="text" ng-model="inputArea" placeholder="Work, health, create, …")
+              input.form-control(type="text" ng-model="inputArea" placeholder="Work, health, create, ...")
       
             ul.list-unstyled
               li(ng-repeat="area in areas")
@@ -66,7 +76,7 @@ html(ng-app="app")
           .col-sm-3
             h4 Routines <small>Enter to submit</small>
             form(ng-submit="addRoutine()")
-              input.form-control(type="text" ng-model="inputRoutine" placeholder="Floss, Sport, Study, …")
+              input.form-control(type="text" ng-model="inputRoutine" placeholder="Floss, Sport, Study, ...")
       
             ul.list-unstyled
               li(ng-repeat="routine in routines")
@@ -78,7 +88,7 @@ html(ng-app="app")
             h4 Meals <small>Enter to submit</small>
             form(ng-submit="addMeal()")
               / button.btn.btn-primary(type="submit" style="float: right;") Add
-              input.form-control(type="text" ng-model="inputMeal" placeholder="Lunch, Snack, …")
+              input.form-control(type="text" ng-model="inputMeal" placeholder="Lunch, Snack, ...")
           
             ul.list-unstyled
               li(ng-repeat="meal in meals")
@@ -122,15 +132,20 @@ html(ng-app="app")
                 div#wrapper-bottom-bottom
                   section#info
                     p
-                      span.year {{ date.format("YYYY") }}
+                      span.year
+                        | {{ date.format("YYYY") }}
                       | /
-                      span.month {{ date.format("MM") }}
+                      span.month
+                        | {{ date.format("MM") }}
                       | /
-                      span.day {{ date.format("DD") }}
+                      span.day
+                         | {{ date.format("DD") }}
                     p
-                      span.week {{ date.format("ww") }}
+                      span.week
+                        | {{ date.format("ww") }}
                       | .&nbsp;
-                      span.weekday {{ date.format("dddd") }}
+                      span.weekday
+                        | {{ date.format("dddd") }}
                       
                   section#routines
                     ul.list-routines

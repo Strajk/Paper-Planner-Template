@@ -9,10 +9,11 @@
       angular.module('app', []);
       
       function PlannerCtrl($scope) {
-        $scope.areas = ["People", "Health", "Interests", "Education", "Create", "Work"];
-        $scope.routines = ["Floss", "7AM wakeup", "Plan", "Review", "Sash", "Photo"];
-        $scope.meals = ['breakfast', 'AM snack', 'lunch', 'PM snack', 'post workout', 'dinner', 'night snack'];
+        $scope.areas = ["People", "Health", "Interests", "Organize", "Create", "Work"];
+        $scope.routines = ["Floss", "6AM wakeup", "Plan", "Review", "Love", "Photo", "Guitar"];
+        $scope.meals = ['breakfast', 'AM snack', 'lunch', 'PM snack', 'dinner', 'night snack'];
         $scope.date = moment();
+      
       
         $scope.addArea = function() {
           $scope.areas.push($scope.inputArea);
@@ -21,6 +22,15 @@
       
         $scope.removeArea = function(index) {
           $scope.areas.splice(index, 1);
+        };
+      
+        $scope.addRoutine = function() {
+          $scope.routines.push($scope.inputRoutine);
+          $scope.inputRoutine = '';
+        };
+      
+        $scope.removeRoutine = function(index) {
+          $scope.routines.splice(index, 1);
         };
       
         $scope.addMeal = function() {
@@ -60,7 +70,7 @@
               Areas <small>Enter to submit</small>
             </h4>
             <form ng-submit="addArea()">
-              <input class="form-control" ng-model="inputArea" placeholder="Work, health, create, …" type="text" />
+              <input class="form-control" ng-model="inputArea" placeholder="Work, health, create, ..." type="text" />
             </form>
             <ul class="list-unstyled">
               <li ng-repeat="area in areas">
@@ -73,7 +83,7 @@
               Routines <small>Enter to submit</small>
             </h4>
             <form ng-submit="addRoutine()">
-              <input class="form-control" ng-model="inputRoutine" placeholder="Floss, Sport, Study, …" type="text" />
+              <input class="form-control" ng-model="inputRoutine" placeholder="Floss, Sport, Study, ..." type="text" />
             </form>
             <ul class="list-unstyled">
               <li ng-repeat="routine in routines">
@@ -86,7 +96,7 @@
               Meals <small>Enter to submit</small>
             </h4>
             <form ng-submit="addMeal()">
-              <input class="form-control" ng-model="inputMeal" placeholder="Lunch, Snack, …" type="text" />
+              <input class="form-control" ng-model="inputMeal" placeholder="Lunch, Snack, ..." type="text" />
             </form>
             <ul class="list-unstyled">
               <li ng-repeat="meal in meals">
