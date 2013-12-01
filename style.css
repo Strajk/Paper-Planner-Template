@@ -37,16 +37,16 @@ section#print body {
     width: 100%;
     height: 100%; }
     .paper .wrapper div#wrapper-top {
-      height: 243mm; }
+      height: 248mm; }
       .paper .wrapper div#wrapper-top #wrapper-top-right {
         float: right;
-        width: 60mm; }
+        width: 100mm; }
       .paper .wrapper div#wrapper-top #wrapper-top-left {
-        margin-right: 62mm;
+        margin-right: 102mm;
         position: relative;
         height: 100%; }
         .paper .wrapper div#wrapper-top #wrapper-top-left #wrapper-top-left-top {
-          height: 50mm; }
+          height: 70mm; }
         .paper .wrapper div#wrapper-top #wrapper-top-left #wrapper-top-left-bottom {
           position: absolute;
           left: 0;
@@ -80,7 +80,7 @@ section#meals {
   margin-bottom: 2mm; }
   section#meals table {
     width: 100%;
-    height: 20mm;
+    height: 15mm;
     table-layout: fixed;
     /* Same widths of cells */ }
     section#meals table td {
