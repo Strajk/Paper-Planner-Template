@@ -67,7 +67,7 @@ section#tasks .hours {
   list-style: none;
   width: 10mm; }
   section#tasks .hours li {
-    height: 14mm;
+    height: 13.5mm;
     border-top: 1px solid gray;
     text-align: center; }
     section#tasks .hours li span {
