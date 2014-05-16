@@ -1,0 +1,99 @@
+doctype html
+html(ng-app="app")
+  head
+    link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.0.0-rc2/css/bootstrap.min.css"
+    link rel="stylesheet" href="month.css"
+    script(src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.1.5/angular.min.js")
+    script(src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.2.1/moment+langs.min.js")
+    javascript:
+      angular.module('app', []);
+      
+      function PlannerCtrl($scope) {
+        $scope.todos = [];
+        $scope.routines = [];
+        $scope.date = moment();
+
+ 
+        $scope.addTodo = function() {
+          $scope.todos.push($scope.inputTodo);
+          $scope.inputTodo = '';
+        };
+        
+        $scope.removeTodo = function(index) {
+          $scope.todos.splice(index, 1);
+        };
+
+        $scope.addRoutine = function() {
+          $scope.routines.push($scope.inputRoutine);
+          $scope.inputRoutine = '';
+        };
+
+        $scope.removeRoutine = function(index) {
+          $scope.routines.splice(index, 1);
+        };
+
+        $scope.prevMonth = function() {
+          $scope.date.subtract('month', 1);
+        };
+        
+        $scope.today = function() {
+          $scope.date = moment();
+        };
+
+        $scope.nextMonth = function() {
+          $scope.date.add('month', 1);
+        };
+      }
+      
+  body(ng-controller="PlannerCtrl")
+    .container
+  
+      section#customize.no-print
+        .page-header: h2 1. Customize
+        .row
+          .col-sm-4
+            h4 Todos <small>Enter to submit</small>
+            form(ng-submit="addTodo()")
+              input.form-control(type="text" ng-model="inputTodo" placeholder="")
+      
+            ul.list-unstyled
+              li(ng-repeat="todo in todos")
+                a.delete(ng-click="removeTodo($index)") &times;
+                | {{ todo }}
+                
+          .col-sm-4
+            h4 Routines <small>Enter to submit</small>
+            form(ng-submit="addRoutine()")
+              input.form-control(type="text" ng-model="inputRoutine" placeholder="Floss, Sport, Study, ...")
+      
+            ul.list-unstyled
+              li(ng-repeat="routine in routines")
+                a.delete(ng-click="removeRoutine($index)") &times; 
+                | {{ routine }}
+
+          .col-sm-4
+            h4 Date
+            p: a.btn.btn-default(ng-click="prevMonth()" style="width: 100%") Prev day
+            p: a.btn.btn-default(ng-click="today()" style="width: 100%") Today
+            p: a.btn.btn-default(ng-click="nextMonth()" style="width: 100%") Next day
+              
+      section#print
+        header.page-header.no-print
+          h2 2. Print <small><strong>Works properly only in Chrome.</strong> Print via standard print dialog</small>
+        body
+          .paper
+            .wrapper
+              div#wrapper-top
+                section#todos
+                  ul.list-todos
+                    li(ng-repeat="area in areas") {{ area }}
+
+              div#wrapper-bottom
+                section#routines
+                  table
+                    tr
+                      th
+                      th(ng-repeat="day in days") {{ $index }}
+                    tr(ng-repeat="routine in routines")
+                      th {{ routine }}
+                      th(ng-repeat="day in days")
